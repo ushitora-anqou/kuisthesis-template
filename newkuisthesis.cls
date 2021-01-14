@@ -18,9 +18,9 @@
 	hanging_punctuation,% ぶら下がり組を有効化する。kuisthesis.styで組んだ際のページ数と似通ったものにするため。
 ]{jlreq}
 \jlreqsetup{
-	itemization_beforeafter_space=0\zw,% 箇条書の前後に余分な空白は挿入しない
-	itemization_itemsep=0\zw,% 項目間に余分な空白は挿入しない
-	quote_beforeafter_space=0\zw,% 引用についても箇条書きの規則を準用
+	itemization_beforeafter_space=0pt,% 仕様：箇条書の前後に余分な空白は挿入しない
+	itemization_itemsep=0pt,% 仕様：項目間に余分な空白は挿入しない
+	quote_beforeafter_space=0pt,% 運用：引用についても箇条書きの規則を準用
 }
 
 \RequirePackage{
