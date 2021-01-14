@@ -1,18 +1,19 @@
-\documentclass{kuisthesis}			% 特別研究報告書
+\documentclass{newkuisthesis}
+%\documentclass{kuisthesis}			% 特別研究報告書
 %\documentclass[master]{kuisthesis}		% 修士論文(和文)
 %\documentclass[master,english]{kuisthesis}	% 修士論文(英文)
 
-\def\LATEX{{\rm (L\kern-.36em\raise.3ex\hbox{\sc a})\TeX}}
+\def\LATEX{{\rmfamily (L\kern-.36em\raise.3ex\hbox{\scshape a})\TeX}}
 \def\LATex{\iLATEX\small}
-\def\iLATEX#1{L\kern-.36em\raise.3ex\hbox{#1\bf A}\kern-.15em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}
+\def\iLATEX#1{L\kern-.36em\raise.3ex\hbox{#1\bfseries A}\kern-.15em
+	T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}
 \def\LATEXe{\ifx\LaTeXe\undefined \LaTeX 2e\else\LaTeXe\fi}
 \def\LATExe{\ifx\LaTeXe\undefined \iLATEX\scriptsize 2e\else\LaTeXe\fi}
-\let\EM\bf
+\let\EM\bfseries
 \def\|{\verb|}
 \def\<{\(\langle\)}
 \def\>{\(\rangle\)}
-\def\CS#1{{\tt\string#1}}
+\def\CS#1{{\ttfamily\string#1}}
 
 \jtitle[特別研究報告書執筆の手引]%	% 和文題目（内容梗概／目次用）
 	{特別研究報告書執筆の手引}	% 和文題目
@@ -429,7 +430,7 @@ make sure that you follow the standard specified by your department.
 \bibliography{guide}				% 参考文献の出力
 
 						% 付録の開始
-\Appendix[付録：スタイルファイル{\tt kuistheis}の使用法]
+\Appendix[付録：スタイルファイル{\ttfamily kuistheis}の使用法]
 この手引で述べた教室所定の形式に適合した論文を\LaTeX で作成するために，スタ
 イルファイル\|kuisthesis|が用意されている．以下，\|kuisthesis|を使う
 ための準備と，その使用法について解説する．
@@ -492,22 +493,22 @@ jBib\TeX スタイル（出現順）
 
 NTT版およびアスキー版の各々について，以下のバージョンでの動作確認を行なって
 いる．
-\begin{ITEMIZE}%{
+\begin{itemize}%{
 \item
 NTT版${}={}${j\TeX} 1.52${}+{}${\LaTeX} 2.09
 \item 
 アスキー版${}={}${\TeX} 2.99-j1.7${}+{}${\LaTeX} 2.09
-\end{ITEMIZE}%}
+\end{itemize}%}
 これ以前の版についても動作すると期待できるが，できれば新しい版を使うこと．ま
 た{\LATEXe}に関しては，以下のバージョンでの動作確認を行なっている．
-\begin{ITEMIZE}%{
+\begin{itemize}%{
 \item
 NTT版${}={}${j\TeX} 1.6${}+{}$%
 	{\LATEXe} 1994/12/01 patch level 3
 \item 
 アスキー版${}={}${p\TeX} 3.1415 p2.1.4${}+{}$%
 	{p\LATEXe} 1995/09/01
-\end{ITEMIZE}%}
+\end{itemize}%}
 いずれについても，ネイティブ・モードと{\LaTeX} 2.09 互換モードのどちらでも使
 用することができる．
 
@@ -530,14 +531,14 @@ NTT版${}={}${j\TeX} 1.6${}+{}$%
 \|\date{|\<提出年月日\>\|}|\\
 \|\department{|\<専攻名\>\|}|\\
 \|\begin{document}|\\
-\|\maketitle|\hfill\rlap{\hskip-.5\linewidth{\tt\%}とびらの出力}\\
+\|\maketitle|\hfill\rlap{\hskip-.5\linewidth{\ttfamily\%}とびらの出力}\\
 \|\begin{jabstract}|\\
 \null\qquad\<内容梗概（和文）\>\\
 \|\end{jabstract}|\\
 \|\begin{eabstract}|\\
 \null\qquad\<内容梗概（英文）\>\\
 \|\end{eabstract}|\\
-\|\tableofcontents|\hfill\rlap{\hskip-.5\linewidth{\tt\%}目次の出力}\\
+\|\tableofcontents|\hfill\rlap{\hskip-.5\linewidth{\ttfamily\%}目次の出力}\\
 \|\section{|\<第1章の表題\>\|}|\\
 \null\qquad\hbox to3em{\dotfill}\\
 \null\qquad\<本文\>\\
@@ -555,7 +556,7 @@ NTT版${}={}${j\TeX} 1.6${}+{}$%
 \subsection{印字の形式}\label{appsub-format}
 論文の各ページは，幅(\|\textwidth|) 14.2\,cm, 高さ(\|\textheight|) 
 22.2\,cmの領域に印刷される\footnote{NTT版では和文の場合，幅 
-({\tt\string\textwidth})が 13.6\,cmとなる}．この幅は和文の場合には35文字分に
+({\ttfamily\string\textwidth})が 13.6\,cmとなる}．この幅は和文の場合には35文字分に
 相当し，高さは和文／英文とも32行分に相当するので，\ref{subsec-format}節に
 示した基準に合致している．
 
@@ -750,7 +751,7 @@ Kyoto University
 
 横に並べる\|subfigure|\slash\|subtable|の横幅の合計が，
 \|\textwidth|に一致するようにするのが望ましい\footnote{各々の間に
-{\tt\string\hspace\char`\{\string\fill\char`\}}を挿入するなどして，間隔を置く
+{\ttfamily\string\hspace\char`\{\string\fill\char`\}}を挿入するなどして，間隔を置く
 こともできる．}．
 
 \begin{figure}%{
@@ -805,7 +806,7 @@ placed&beside&a figure.
 どちらのコマンドもオプション引数を持ち，付録全体の見出しをつけることができる．
 たとえば，この付録は
 \begin{quote}
-\|\Appendix[付録：スタイルファイル{\tt kuisthesis}の使い方]|
+\|\Appendix[付録：スタイルファイル{\ttfamily kuisthesis}の使い方]|
 \end{quote}
 で始まっている．オプション引数がない場合には，付録全体の見出しは単に「付録」
 または``Appendix''である．
@@ -813,7 +814,7 @@ placed&beside&a figure.
 付録の中の\|\section|, \|\subsection|などは，1レベル下のコマンドと同じ動作を
 する．またこれらの番号は，``A.1''や``A.2.3''のように，先頭に``A.''が付加され
 たものとなる．同様に，図表や数式の番号にも，先頭に``A.''が付加される
-\footnote{この番号付けは{\tt\string\documentclass}の{\tt withinsec}オプションと
+\footnote{この番号付けは{\ttfamily\string\documentclass}の{\ttfamily withinsec}オプションと
 は無関係である．}．
 
 \section{その他の注意}\label{app-others}
