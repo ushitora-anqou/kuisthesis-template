@@ -12,5 +12,6 @@
 - 修論や、英文の卒論・修論には対応していない。
 - `withinsec`オプションは対応していない。例えば chngcntr パッケージ等が使えるかも知れないが未確認。
 - `\appendix`には対応してない。`\Appendix`には対応した。
+- ぶら下がり組を行う。
 
 実用例は[`guide.tex`への修正](https://github.com/ushitora-anqou/kuisthesis-template/commit/ebb13e2f108393d4b972abdd5967288d671a3891#diff-4cbaca92b8ae177a86f3180fd3b718ac06757c25cbf99f145dd176a811edf13d)を参考のこと。
