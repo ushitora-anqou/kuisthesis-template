@@ -15,7 +15,6 @@
 	jafontsize=12pt,% 仕様：日本文の場合は12 ptのフォント
 	line_length=35zw,% 仕様：1行当り35文字（英文の場合は1行の幅を14.2cmとする）
 	number_of_lines=32,% 仕様：1ページあたり32行
-	hanging_punctuation,% ぶら下がり組を有効化する。kuisthesis.styで組んだ際のページ数と似通ったものにするため。
 ]{jlreq}
 \jlreqsetup{
 	itemization_beforeafter_space=0pt,% 仕様：箇条書の前後に余分な空白は挿入しない
