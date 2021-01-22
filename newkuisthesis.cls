@@ -41,7 +41,8 @@
 \RenewBlockHeading{subsubsection}{3}{font=\jlreq@keepbaselineskip{\normalsize\bfseries},lines=1}
 % 運用：見出しが連続する場合は無駄に間が開かないように調整する。
 \SetBlockHeadingSpaces{
-{_section{lines=2}, _subsection{lines=1}}
+% [lines=3]が無いと、sectionの直後で改ページされてしまう。
+[lines=3]{_section{lines=2},_subsection{lines=1}}
 }
 % \section*{}を使用した場合も目次に登場させるため\section{}を再定義する。
 % Thanks to: https://tex.stackexchange.com/a/292419
