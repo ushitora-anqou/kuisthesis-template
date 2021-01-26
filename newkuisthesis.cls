@@ -163,6 +163,10 @@
 	\noindent{\bfseries Abstract}\par\parindent1.5em\noindent\ignorespaces%
 }{\newpage}
 
+%% 図表
+% 表の上側につくキャプションのため、キャプションの下側もすこし開ける
+\setlength\belowcaptionskip{.5\jlreq@gol}
+
 %% 便利マクロ
 %% kuisthesis.styにもあったので、互換性のために残す。
 \def\cap@beforeskip{\nointerlineskip\vskip10pt}
