@@ -67,7 +67,7 @@
 \NewDocumentCommand{\Appendix}{o}{%
 	\clearpage\pagenumbering{arabic}\renewcommand*{\thepage}{A-\arabic{page}}
 	\newkuis@oldappendix
-	\IfValueT{#1}{\newkuis@oldappendix\section*{#1}}}
+	\IfValueTF{#1}{\newkuis@oldappendix\section*{#1}}{\newkuis@oldappendix\section*{付録}}}
 \jlreqsetup{appendix_counter = {section = {value = 0, the = {A.\arabic{section}}}}}
 
 %% 目次
