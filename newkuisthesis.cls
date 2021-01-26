@@ -102,16 +102,6 @@
 		\let\makelabel=\descriptionlabel
 	}}{\endlist}
 %% END
-%% FIXME: newpxtextを読み込んだ際にjlreqのfootnoteが壊れるバグを修正するためのモンキーパッチ。
-%% upstreamが修正されたのを確認したら消す。
-%% BEGIN
-\def\@footnotemark{%
-	\leavevmode
-	\ifhmode\edef\@x@sf{\the\spacefactor}\nobreak\fi
-	\jlreq@ifydir{\jlreq@notemark{\@thefnmark}}{\hbox{\jlreq@notemark{\@thefnmark}}}%
-	\ifhmode\spacefactor\@x@sf\fi
-	\relax}
-%% END
 
 %% 表紙
 \renewcommand{\maketitle}{\newpage\thispagestyle{empty}
