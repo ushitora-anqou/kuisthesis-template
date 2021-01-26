@@ -1,7 +1,18 @@
+\RequirePackage{plautopatch}% pLaTeX/upLaTeXでコンパイルする場合のみ読み込む
 \documentclass{newkuisthesis}
 %\documentclass{kuisthesis}			% 特別研究報告書
 %\documentclass[master]{kuisthesis}		% 修士論文(和文)
 %\documentclass[master,english]{kuisthesis}	% 修士論文(英文)
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{newpxtext,newpxmath}% amsmathより後、bmより先
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{url}
 
 \def\LATEX{{\rmfamily (L\kern-.36em\raise.3ex\hbox{\scshape a})\TeX}}
 \def\LATex{\iLATEX\small}
