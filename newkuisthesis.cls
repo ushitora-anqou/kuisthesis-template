@@ -15,7 +15,7 @@
 	jafontsize=12pt,% 仕様：日本文の場合は12 ptのフォント
 	line_length=35zw,% 仕様：1行当り35文字（英文の場合は1行の幅を14.2cmとする）
 	number_of_lines=32,% 仕様：1ページあたり32行
-]{jlreq}
+]{jlreq}[2020/02/07]
 \jlreqsetup{
 	itemization_beforeafter_space=0pt,% 仕様：箇条書の前後に余分な空白は挿入しない
 	itemization_itemsep=0pt,% 仕様：項目間に余分な空白は挿入しない
