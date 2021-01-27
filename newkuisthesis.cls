@@ -34,6 +34,9 @@
 % 仕様：章の見出しは2行分
 % 運用：ここでいう「章」とはsectionのこと。
 \RenewBlockHeading{section}{1}{font={\jlreq@keepbaselineskip{\Large\bfseries}},lines=2}
+\NewBlockHeading{sectionWOL}{1}{% ラベルなし（W/O Label）。\section*と異なり目次には出力される。
+	font={\jlreq@keepbaselineskip{\Large\bfseries}},lines=2,
+	label_format={},indent=0\zw,after_label_space=0\zw}
 % 仕様：節の見出しは2行分
 % 運用：ここでいう「節」とはsubsectionのこと。事前に空行を1行入れ2行分にする。
 \RenewBlockHeading{subsection}{2}{font=\jlreq@keepbaselineskip{\large\bfseries},before_lines=1}
@@ -42,43 +45,60 @@
 % 運用：見出しが連続する場合は無駄に間が開かないように調整する。
 \SetBlockHeadingSpaces{
 % [lines=3]が無いと、sectionの直後で改ページされてしまう。
-[lines=3]{_section{lines=2},_subsection{lines=1}}
-}
-% \section*{}を使用した場合も目次に登場させるため\section{}を再定義する。
-% Thanks to: https://tex.stackexchange.com/a/292419
-\let\newkuis@oldsection=\section
-\newcounter{newkuis@secnumdepth}
-\RenewDocumentCommand{\section}{s o m}{%
-	\IfBooleanTF{#1}
-	{\setcounter{newkuis@secnumdepth}{\value{secnumdepth}}% Store secnumdepth
-		\setcounter{secnumdepth}{0}% Print only up to \chapter numbers
-		\newkuis@oldsection{#3}% \section*
-		\setcounter{secnumdepth}{\value{newkuis@secnumdepth}}}% Restore secnumdepth
-	{\IfValueTF{#2}% \section
-		{\newkuis@oldsection[#2]{#3}}% \section[.]{..}
-		{\newkuis@oldsection{#3}}}% \section{..}
+[lines=3]{_section{lines=2},_subsection{lines=1}},
+[lines=3]{_sectionWOL{lines=2},_subsection{lines=1}},
 }
 
 %% 謝辞
-\newcommand{\acknowledgments}{\section*{謝辞}}
+\newcommand{\acknowledgments}{\sectionWOL{謝辞}}
+
+%% 参考文献
+\renewenvironment{thebibliography}[1]{%
+	\jlreq@oldfontcommand@enable
+	\sectionWOL{\refname}% jlreqからの変更点はここだけ
+	\@mkboth{\refname}{\refname}%
+	\list{\@biblabel{\@arabic\c@enumiv}}%
+	{\settowidth\labelwidth{\@biblabel{#1}}%
+		\labelsep=1\jlreq@zw
+		\leftmargin\labelwidth
+		\advance\leftmargin\labelsep
+		\itemindent=0pt
+		\@openbib@code
+		\usecounter{enumiv}%
+		\let\p@enumiv\@empty
+		\renewcommand\theenumiv{\@arabic\c@enumiv}}%
+	\sloppy
+	\clubpenalty4000
+	\@clubpenalty\clubpenalty
+	\widowpenalty4000%
+	\sfcode`\.\@m
+}{%
+	\def\@noitemerr{\@latex@warning{Empty `thebibliography' environment}}%
+	\endlist
+	\jlreq@oldfontcommand@disable
+}
 
 %% 付録
 \let\newkuis@oldappendix=\appendix
 \NewDocumentCommand{\Appendix}{o}{%
-	\clearpage\pagenumbering{arabic}\renewcommand*{\thepage}{A-\arabic{page}}
-	\newkuis@oldappendix
-	\IfValueTF{#1}{\newkuis@oldappendix\section*{#1}}{\newkuis@oldappendix\section*{付録}}}
-\jlreqsetup{appendix_counter = {section = {value = 0, the = {A.\arabic{section}}}}}
+	\clearpage\pagenumbering{arabic}\renewcommand*{\thepage}{A-\arabic{page}}%
+	\newkuis@oldappendix%
+	% sectionをsubsectionに、subsectionをsubsubsectionに
+	\let\section=\subsection\let\subsection=\subsubsection%
+	\IfValueTF{#1}{\sectionWOL{#1}}{\sectionWOL{付録}}%
+}
+\jlreqsetup{appendix_counter = {subsection = {value = 0, the = {A.\arabic{subsection}}}}}
 
 %% 目次
 \renewcommand{\tableofcontents}{\newpage\pagestyle{empty}
 	\begin{center}\large\bfseries\leavevmode\newkuis@jtitleforabst\end{center}
-	\newkuis@oldsection*{目次\@mkboth{目次}{目次}}
+	\section*{目次\@mkboth{目次}{目次}}
 	\@starttoc{toc}\newpage\pagestyle{newkuis@body}\setcounter{page}{1}
 }
-\titlecontents{section}[0\zw]{\bfseries}{\thecontentslabel\hspace{1\zw}}{}{\hfill\contentspage}
-\titlecontents{subsection}[2\zw]{}{\thecontentslabel\hspace{1\zw}}{}{\dotfill\contentspage}
-\titlecontents{subsubsection}[4\zw]{}{\thecontentslabel\hspace{1\zw}}{}{\dotfill\contentspage}
+\titlecontents{section}[2\zw]{\bfseries}{\contentslabel{2zw}}{}{\hfill\contentspage}
+\titlecontents{sectionWOL}[2\zw]{\bfseries}{\contentslabel{2zw}}{}{\hfill\contentspage}
+\titlecontents{subsection}[4.5\zw]{}{\contentslabel{2.5zw}}{}{\dotfill\contentspage}
+\titlecontents{subsubsection}[8\zw]{}{\contentslabel{3.5zw}}{}{\dotfill\contentspage}
 
 %% ページスタイル
 % 内容梗概用
