@@ -13,16 +13,41 @@
 - `withinsec`オプションは対応していない。例えば chngcntr パッケージ等が使えるかも知れないが未確認。
 - `\appendix`には対応してない。`\Appendix`には対応した。
 - 最近の組版に対応する。具体的には`\verb|...|`が右に突き抜けなくなったりする。
-- 必要最低限のパッケージしか読み込んでいないので、元と同じものを読み込みたい場合は、次をプリアンブルに書く。
 
-```
-\usepackage{newpxtext}
+## 使い方
+
+必要最低限のパッケージしか読み込んでいないので、
+元と同じものを読み込みたい場合は、次をプリアンブルに書く。
+
+```latex
+\RequirePackage{plautopatch}% pLaTeX/upLaTeXでコンパイルする場合のみ読み込む
+\documentclass{newkuisthesis}
+
+\usepackage[T1]{fontenc}% pLaTeX/upLaTeXでコンパイルする場合のみ読み込む
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsxtra}
+\usepackage{amsthm}
+% newpxtextはamsmathより後、bmより先に読み込む必要がある。
+% footnotemarkが壊れるのを防ぐためdefaultsupsオプションを使用する。
+% Thanks to: https://mstdn.wtsnjp.com/@wtsnjp/105621659654299621
+\usepackage[defaultsups]{newpxtext}
+\usepackage{newpxmath}
 \usepackage{bm}
 \usepackage{cite}
 \usepackage{url}
+
+\def\LATEX{{\rmfamily (L\kern-.36em\raise.3ex\hbox{\scshape a})\TeX}}
+\def\LATex{\iLATEX\small}
+\def\iLATEX#1{L\kern-.36em\raise.3ex\hbox{#1\bfseries A}\kern-.15em
+	T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}
+\def\LATEXe{\ifx\LaTeXe\undefined \LaTeX 2e\else\LaTeXe\fi}
+\def\LATExe{\ifx\LaTeXe\undefined \iLATEX\scriptsize 2e\else\LaTeXe\fi}
+\let\EM\bfseries
+\def\|{\verb|}
+\def\<{\(\langle\)}
+\def\>{\(\rangle\)}
+\def\CS#1{{\ttfamily\string#1}}
 ```
 
-実用例は[`guide.tex`への修正](https://github.com/ushitora-anqou/kuisthesis-template/commit/ebb13e2f108393d4b972abdd5967288d671a3891#diff-4cbaca92b8ae177a86f3180fd3b718ac06757c25cbf99f145dd176a811edf13d)を参考のこと。
+詳細は`guide.tex`を参考のこと。
