@@ -87,7 +87,11 @@
 	\let\section=\subsection\let\subsection=\subsubsection%
 	\IfValueTF{#1}{\sectionWOL{#1}}{\sectionWOL{付録}}%
 }
-\jlreqsetup{appendix_counter = {subsection = {value = 0, the = {A.\arabic{subsection}}}}}
+\jlreqsetup{appendix_counter = {%
+			subsection = {value = 0, the = {A.\arabic{subsection}}},
+			figure = {value = 0, the = {A.\arabic{figure}:}},
+			table = {value = 0, the = {A.\arabic{table}:}},
+		}}
 
 %% 目次
 \renewcommand{\tableofcontents}{\newpage\pagestyle{empty}
