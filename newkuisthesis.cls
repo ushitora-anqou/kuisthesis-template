@@ -100,10 +100,10 @@
 	\section*{目次\@mkboth{目次}{目次}}
 	\@starttoc{toc}\newpage\pagestyle{newkuis@body}\setcounter{page}{1}
 }
-\titlecontents{section}[2\zw]{\bfseries}{\contentslabel{2zw}}{}{\hfill\contentspage}
-\titlecontents{sectionWOL}[2\zw]{\bfseries}{\contentslabel{2zw}}{}{\hfill\contentspage}
-\titlecontents{subsection}[4.5\zw]{}{\contentslabel{2.5zw}}{}{\dotfill\contentspage}
-\titlecontents{subsubsection}[8\zw]{}{\contentslabel{3.5zw}}{}{\dotfill\contentspage}
+\titlecontents{section}[2\zw]{\bfseries}{\contentslabel{2\zw}}{}{\hfill\contentspage}
+\titlecontents{sectionWOL}[2\zw]{\bfseries}{\contentslabel{2\zw}}{}{\hfill\contentspage}
+\titlecontents{subsection}[4.5\zw]{}{\contentslabel{2.5\zw}}{}{\dotfill\contentspage}
+\titlecontents{subsubsection}[8\zw]{}{\contentslabel{3.5\zw}}{}{\dotfill\contentspage}
 
 %% ページスタイル
 % 内容梗概用
