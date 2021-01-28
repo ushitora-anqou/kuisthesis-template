@@ -11,19 +11,24 @@
 - `\tt`・`\bf`・`\rm`・`\sc`などは定義されない。代わりに`\ttfamily`・`\bfseries`・`\rmfamily`・`\scstyle`を使う。
 - 修論や、英文の卒論・修論には対応していない。
 - `withinsec`オプションは対応していない。例えば chngcntr パッケージ等が使えるかも知れないが未確認。
-- `\appendix`には対応してない。`\Appendix`には対応した。
-- 最近の組版に対応する。具体的には`\verb|...|`が右に突き抜けなくなったりする。
+- `\appendix`には対応していない。`\Appendix`には対応した。
+- 最近の（JLreq の）組版に対応する。具体的には`\verb|...|`が右に突き抜けなくなったりする。
+- よくある問題に対応済み。例えば
+  - 用紙サイズが US Letter になるとか
+  - `\usepackage{graphicx}`すると壊れるとか
 
 ## 使い方
 
-必要最低限のパッケージしか読み込んでいないので、
-元と同じものを読み込みたい場合は、次をプリアンブルに書く。
+kuisthesis.cls で読み込まれていたいくつかのパッケージは、
+newkuisthesis.cls ではデフォルトでは読み込まれないので、自前で読み込む必要がある。
+upLaTeX を使って組版を行う場合は、おおよそ次のようなものを書いて始めるとうまくいく。
+LuaLaTeX の場合は手直しが必要なはず。（[参考](https://qiita.com/zr_tex8r/items/ac9176e4611bf233a3e0)）
 
 ```latex
-\RequirePackage{plautopatch}% pLaTeX/upLaTeXでコンパイルする場合のみ読み込む
+\RequirePackage{plautopatch}
 \documentclass{newkuisthesis}
 
-\usepackage[T1]{fontenc}% pLaTeX/upLaTeXでコンパイルする場合のみ読み込む
+\usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsxtra}
@@ -34,20 +39,10 @@
 \usepackage[defaultsups]{newpxtext}
 \usepackage{newpxmath}
 \usepackage{bm}
-\usepackage{cite}
-\usepackage{url}
-
-\def\LATEX{{\rmfamily (L\kern-.36em\raise.3ex\hbox{\scshape a})\TeX}}
-\def\LATex{\iLATEX\small}
-\def\iLATEX#1{L\kern-.36em\raise.3ex\hbox{#1\bfseries A}\kern-.15em
-	T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}
-\def\LATEXe{\ifx\LaTeXe\undefined \LaTeX 2e\else\LaTeXe\fi}
-\def\LATExe{\ifx\LaTeXe\undefined \iLATEX\scriptsize 2e\else\LaTeXe\fi}
-\let\EM\bfseries
-\def\|{\verb|}
-\def\<{\(\langle\)}
-\def\>{\(\rangle\)}
-\def\CS#1{{\ttfamily\string#1}}
+\usepackage[nobreak]{cite}
+\usepackage{hyperref}
+\usepackage{pxjahyper}
+\usepackage{graphicx,xcolor}
 ```
 
 詳細は`guide.tex`を参考のこと。
