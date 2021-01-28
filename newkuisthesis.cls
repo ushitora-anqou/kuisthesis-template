@@ -27,6 +27,7 @@
 	titletoc,
 	xparse,
 }
+\RequirePackage[dvipdfmx]{bxdvidriver}% dviが出力の場合はdvipdfmxをDVI driverとする
 
 \newcommand{\newkuis@error}[2]{\GenericError{[newkuisthesis] }{#1}{#2}{#2}}
 
